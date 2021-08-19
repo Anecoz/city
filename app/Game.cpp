@@ -1,6 +1,7 @@
 #include "Game.h"
 
 #include "Constants.h"
+#include "FontCache.h"
 
 #include "ecs/Engine.h"
 
@@ -12,7 +13,7 @@ Game::Game()
 
 void Game::init()
 {
-  // TODO: Init font and stuff here
+  fontcache::init();
 }
 
 void Game::run()
