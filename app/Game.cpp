@@ -41,7 +41,9 @@ std::unique_ptr<ecs::Entity> createTestCommercialBuilding()
   rect.setFillColor(sf::Color::Red);
   ent->addComp(std::make_unique<component::VisualBox>(std::move(rect)));
   ent->addComp(std::make_unique<component::Position>(sf::Vector2f(600.0f, 100.0f)));
-  ent->addComp(std::make_unique<component::CommercialBuilding>());
+  auto commercialBuildComp = std::make_unique<component::CommercialBuilding>();
+  commercialBuildComp->_maxWorkers = 1;
+  ent->addComp(std::move(commercialBuildComp));
 
   return ent;
 }
@@ -56,7 +58,9 @@ std::unique_ptr<ecs::Entity> createTestSim()
   ent->addComp(std::make_unique<component::VisualBox>(std::move(rect)));
   ent->addComp(std::make_unique<component::Position>(sf::Vector2f(10.0f, 10.0f)));
   ent->addComp(std::make_unique<component::Velocity>(sf::Vector2f(0.0f, 0.0f)));
-  ent->addComp(std::make_unique<component::SimAI>());
+  auto simComp = std::make_unique<component::SimAI>();
+  simComp->_state = component::SimAI::State::Home;
+  ent->addComp(std::move(simComp));
 
   return ent;
 }

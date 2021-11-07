@@ -16,6 +16,14 @@ public:
 
   bool _employed = false;
   ecs::EntityID _employer;
+
+  enum class State
+  {
+    Home,
+    GoingToWork,
+    Working,
+    GoingHome    
+  } _state;
 };
 
 }
